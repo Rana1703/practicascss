@@ -1,4 +1,4 @@
-const verClima=async()=>{
+const verClima=()=>{
     let apikey="a9cf18b4a4e777fbe6998aa3eb8f42ea";
     let divRes=document.querySelector("#res");
     if(navigator.geolocation){
@@ -10,14 +10,19 @@ const verClima=async()=>{
         console.log(url);
         const api=await fetch(url);
         const data=await api.json();
-        console.log(data)
+        console.log(data);
+        const urlIcon=`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
         divRes.innerHTML=`
         <h1>${data.name}</h1>
         <p>TEMPERATURA:${data.main.temp}°C</p>
+        <img src="${urlIcon}">
         <h2>${data.weather[0].description.toUpperCase()}</h2>
         <p>MIN:${data.main.temp_min}</p>
         <p>MAX:${data.main.temp_max}</p>
         <p>PRESION:${data.main.pressure}</p>
+        <p>HUMEDAD:${data.main.humidity}</p>
+        <p>VELOCIDAD DE VIENTO:${data.wind.speed}m/s</p>
+
         `;
     }
         navigator.geolocation.getCurrentPosition(success, function(msg){
