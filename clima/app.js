@@ -13,7 +13,7 @@ const verClima=()=>{
         console.log(data);
         const urlIcon=`http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
         divRes.innerHTML=`
-        <h1>${data.name}</h1>
+        <h1>${data.timezone}</h1>
         <p>TEMPERATURA:${data.main.temp}°C</p>
         <img src="${urlIcon}">
         <h2>${data.weather[0].description.toUpperCase()}</h2>
